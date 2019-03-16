@@ -1,0 +1,13 @@
+node_modules/
+
+pnpm-debug.log
+
+*.iml
+.idea/
+
+!.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
