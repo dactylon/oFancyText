@@ -1,0 +1,102 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);
+@import '~bulma/bulma';
+@import '~bulma-helpers/bulma-helpers';
+@import '~bulma-checkradio';
+@import '~bulma-tooltip';
+
+$editor-height: 85vh;
+
+html {
+  overflow: auto;
+}
+
+#empty-space-1 {
+  width: 237px;
+}
+
+#color-packer-container {
+  width: auto;
+}
+
+#message-editor-container {
+  position: relative;
+}
+
+#copy-btn {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0.2 !important;
+  padding: 5px;
+}
+
+#copy-btn:focus {
+  opacity: 0.5 !important;
+}
+
+#copy-btn:hover {
+  opacity: 1 !important;
+}
+
+#message-editor {
+  resize: none;
+  width: 100%;
+  height: $editor-height;
+  max-height: $editor-height;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+#message-output {
+  width: 100%;
+  height: $editor-height;
+  max-height: $editor-height;
+  padding: 0;
+  margin: 0;
+  margin-left: 3px;
+  display: table;
+  table-layout: fixed;
+}
+
+.output-pre {
+  height: $editor-height;
+  max-height: $editor-height;
+  overflow: auto;
+  padding: 0px;
+  padding-top: 5px;
+  padding-left: 5px;
+  margin: 0;
+  background-color: $grey-lighter;
+  font-family: $family-monospace;
+  font-size: $size-5;
+}
+
+.credit {
+  display: block;
+  float: right;
+  font-size: 11px;
+  color: #333;
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  padding: 0 5px;
+  top: 5px;
+  z-index: 1000;
+  cursor: auto;
+  clear: both;
+  pointer-events: auto;
+}
+
+.credit a {
+  color: #0078a8;
+  -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
+  text-decoration: none;
+}
+
+.credit a:hover {
+  text-decoration: underline;
+}

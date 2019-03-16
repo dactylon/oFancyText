@@ -1,0 +1,36 @@
+doctype html
+html(class="has-background-white-ter")
+  head
+    base(target="_top")
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    title oFancyText : Ryzom message coloring tool
+
+  body
+    div(class="container is-fluid has-padding-5")
+      div(class="columns is-gapless has-margin-bottom-5")
+        div(class="column is-2" id="empty-space-1")
+        div(class="column is-5")
+          div(class="is-size-5 has-text-centered has-text-weight-bold")
+            span(id="char-count") 0
+            span(class="has-padding-5") /
+            span(id="max-char") 245
+        div(class="column is-5")
+          div(class="field has-text-centered")
+            input(class="is-checkradio is-info" type="radio" id="msg-type-1" name="msg-type" value="gmotd" checked="checked")
+            label(class="has-text-weight-semibold" for="msg-type-1") Gmotd
+
+            input(class="is-checkradio is-info" type="radio" id="msg-type-2" name="msg-type" value="crafter")
+            label(class="has-text-weight-semibold" for="msg-type-2") Crafter
+
+      div(class="columns is-gapless")
+        div(class="column is-2" id="color-packer-container")
+          div(class="has-padding-right-5" id="color-picker" acp-color="#1cdba5" acp-show-rgb="yes" acp-show-hsl="no" acp-show-hex="yes" acp-show-alpha)
+        div(class="column is-5" id="message-editor-container")
+          textarea(class="textarea is-family-monospace is-size-6 has-background-white-bis has-padding-5" id="message-editor" placeholder="Enter message here.")
+          button(class="button is-tooltip-primary tooltip is-tooltip-left" id="copy-btn" data-tooltip="Copy")
+            img(src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard")
+        div(class="column is-5")
+          div(class="textarea is-family-monospace is-size-6 has-background-grey-lighter" id="message-output")
+          div(class="credit")
+            a(href="mailto:DactylonRyzom@gmail.com" title="Created by Dactylon") &copy; Dactylon
