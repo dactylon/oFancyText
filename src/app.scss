@@ -47,7 +47,7 @@ html {
   width: 100%;
   height: $editor-height;
   max-height: $editor-height;
-  white-space: nowrap;
+  white-space: pre-wrap;
   overflow: auto;
 }
 
