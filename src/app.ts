@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const clipboard = new ClipboardJS('#copy-btn', {
     text: trigger => {
       return messageType().value === 'gmotd'
-        ? messageEditor().value.replace(/\n/gm, ' ')
+        ? '/guildmotd ' + messageEditor().value.replace(/\n/gm, ' ')
         : messageEditor().value;
     },
   });
