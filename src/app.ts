@@ -131,22 +131,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function onPickColor(color: string): void {
-  const rgbPattern = /rgb\((?<r>\d+),\s(?<g>\d+),\s(?<b>\d+)\)/;
-  const rgbaPattern = /rgba\((?<r>\d+),\s(?<g>\d+),\s(?<b>\d+),\s(?<a>(\d|0.\d+))\)/;
+  const rgbPattern = /rgb\((\d+),\s(\d+),\s(\d+)\)/;
+  const rgbaPattern = /rgba\((\d+),\s(\d+),\s(\d+),\s((\d|0.\d+))\)/;
+  const iR = 1;
+  const iG = 2;
+  const iB = 3;
+  const iA = 4;
   const rgba: IRGBA = { r: 0, g: 0, b: 0, a: 0 };
 
   if (color.match(rgbPattern)) {
     const c = rgbPattern.exec(color);
-    rgba.r = parseInt(c['groups'].r, 10);
-    rgba.g = parseInt(c['groups'].g, 10);
-    rgba.b = parseInt(c['groups'].b, 10);
+    rgba.r = parseInt(c[iR], 10);
+    rgba.g = parseInt(c[iG], 10);
+    rgba.b = parseInt(c[iB], 10);
     rgba.a = 1;
   } else if (color.match(rgbaPattern)) {
     const c = rgbaPattern.exec(color);
-    rgba.r = parseInt(c['groups'].r, 10);
-    rgba.g = parseInt(c['groups'].g, 10);
-    rgba.b = parseInt(c['groups'].b, 10);
-    rgba.a = parseFloat(c['groups'].a);
+    rgba.r = parseInt(c[iR], 10);
+    rgba.g = parseInt(c[iG], 10);
+    rgba.b = parseInt(c[iB], 10);
+    rgba.a = parseFloat(c[iA]);
   }
   const ryzomColor = RGBAToRyzomColorCode(rgba);
   insertColorAtSelection(messageEditor(), gCurrentMessage, ryzomColor);

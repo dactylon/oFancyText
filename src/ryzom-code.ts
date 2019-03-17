@@ -56,24 +56,28 @@ export function ryzomColorCodeToRGBA(ryzomColorCode: string): IRGBA | null {
     return null;
   }
 
-  const ryzomColorPattern = /@{(?<r>[0-9a-fA-F]){1,}(?<g>[0-9a-fA-F]){1,}(?<b>[0-9a-fA-F]){1,}(?<a>[0-9a-fA-F]){1,}}/;
+  const ryzomColorPattern = /@{([0-9a-fA-F]){1,}([0-9a-fA-F]){1,}([0-9a-fA-F]){1,}([0-9a-fA-F]){1,}}/;
   const colors = ryzomColorPattern.exec(ryzomColorCode);
+  const iR = 1;
+  const iG = 2;
+  const iB = 3;
+  const iA = 4;
 
   // Convert 12-bit to 24-bit
   const color12BitTo24Bit = (color12: string): number => {
     const c12 = parseInt(color12, 16);
     return Math.round((c12 * 255) / 15);
   };
-  const r = color12BitTo24Bit(colors['groups'].r);
-  const g = color12BitTo24Bit(colors['groups'].g);
-  const b = color12BitTo24Bit(colors['groups'].b);
+  const r = color12BitTo24Bit(colors[iR]);
+  const g = color12BitTo24Bit(colors[iG]);
+  const b = color12BitTo24Bit(colors[iB]);
 
   // Convert transparent bit
   const alpha12BitTo24Bit = (alpha12: string): number => {
     const a12 = parseInt(alpha12, 16);
     return a12 / 15;
   };
-  const a = alpha12BitTo24Bit(colors['groups'].a);
+  const a = alpha12BitTo24Bit(colors[iA]);
 
   return { r, g, b, a };
 }
