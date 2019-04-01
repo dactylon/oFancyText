@@ -24,7 +24,7 @@ export function ryzomCodeParser(
   }
 
   const colors: string[] = [];
-  let m: RegExpExecArray;
+  let m: RegExpExecArray | null;
   while ((m = colorPattern.exec(rawMessage)) !== null) {
     // This is necessary to avoid infinite loops with zero-width matches
     if (m.index === colorPattern.lastIndex) {
@@ -57,7 +57,10 @@ export function ryzomColorCodeToRGBA(ryzomColorCode: string): IRGBA | null {
   }
 
   const ryzomColorPattern = /@{([0-9a-fA-F]){1,}([0-9a-fA-F]){1,}([0-9a-fA-F]){1,}([0-9a-fA-F]){1,}}/;
-  const colors = ryzomColorPattern.exec(ryzomColorCode);
+  const colors: RegExpExecArray | null = ryzomColorPattern.exec(ryzomColorCode);
+  if (!colors) {
+    return null;
+  }
   const iR = 1;
   const iG = 2;
   const iB = 3;

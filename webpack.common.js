@@ -10,6 +10,14 @@ const tsconfigFile = path.join(__dirname, 'tsconfig.json');
 
 module.exports = production => {
   return {
+    entry: {
+      app: ['./src/app.ts', './src/app.scss'],
+    },
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: production ? '[name].[contenthash].js' : '[name].js',
+      publicPath: '/',
+    },
     resolve: {
       extensions: ['.ts', '.js', '.scss'],
       modules: [srcDir, nodeModulesDir],
@@ -18,14 +26,6 @@ module.exports = production => {
           configFile: tsconfigFile,
         }),
       ],
-    },
-    entry: {
-      app: ['./src/app.ts', './src/app.scss'],
-    },
-    output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: production ? '[name].[contenthash].js' : '[name].js',
-      publicPath: '/',
     },
     plugins: [
       new CleanWebpackPlugin(),
@@ -44,13 +44,13 @@ module.exports = production => {
       rules: [
         {
           test: /\.pug$/,
-          exclude: ['/node_modules/'],
-          loader: 'pug-loader',
+          exclude: /node_modules/,
+          use: 'pug-loader',
         },
         {
-          test: /\.ts$/,
-          exclude: ['/node_modules/'],
-          loader: 'ts-loader',
+          test: [/\.js$/, /\.ts$/],
+          exclude: /node_modules/,
+          use: 'babel-loader',
         },
         {
           test: /\.(sa|sc|c)ss$/,

@@ -126,6 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   );
   colorPicker.on('change', (picker, color) => {
+    if (!color) {
+      return;
+    }
     onPickColor(color);
   }).off;
 });
@@ -140,13 +143,13 @@ function onPickColor(color: string): void {
   const rgba: IRGBA = { r: 0, g: 0, b: 0, a: 0 };
 
   if (color.match(rgbPattern)) {
-    const c = rgbPattern.exec(color);
+    const c: RegExpExecArray = rgbPattern.exec(color)!;
     rgba.r = parseInt(c[iR], 10);
     rgba.g = parseInt(c[iG], 10);
     rgba.b = parseInt(c[iB], 10);
     rgba.a = 1;
   } else if (color.match(rgbaPattern)) {
-    const c = rgbaPattern.exec(color);
+    const c: RegExpExecArray = rgbaPattern.exec(color)!;
     rgba.r = parseInt(c[iR], 10);
     rgba.g = parseInt(c[iG], 10);
     rgba.b = parseInt(c[iB], 10);
@@ -188,7 +191,8 @@ function insertColorAtSelection(
 }
 
 function updateMaxChar(): void {
-  document.getElementById('max-char').innerText =
+  const maxCharUi: HTMLElement = document.getElementById('max-char')!;
+  maxCharUi.innerText =
     messageType().value === 'gmotd'
       ? maxGmotd.toString()
       : maxCrafterMessage.toString();
@@ -217,7 +221,7 @@ function updateMessageOutput(text: string): void {
 
   let output = '';
   messages.forEach((message: IRyzomMessage) => {
-    const color: IRGBA = ryzomColorCodeToRGBA(message.color);
+    const color: IRGBA = ryzomColorCodeToRGBA(message.color)!;
 
     let colorProp = messages.length > 1 ? 'white' : 'yellow';
     if (color) {

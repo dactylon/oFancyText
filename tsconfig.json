@@ -3,20 +3,22 @@
     "rewriteTsconfig": false
   },
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": "src",
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "lib": ["es2017", "dom"],
+    "isolatedModules": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": true,
     "noImplicitAny": false,
-    "noLib": false,
     "removeComments": true,
     "resolveJsonModule": true,
     "sourceMap": true,
+    "strict": true,
     "target": "esnext"
   },
-  "exclude": ["node_modules", "**/*.spec.ts"],
-  "include": ["./src/**/*.ts"]
+  "exclude": ["node_modules"],
+  "include": ["./src/*.ts"]
 }

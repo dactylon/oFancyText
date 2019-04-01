@@ -1,27 +1,35 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "rules": {
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "global-require": "error"
-    }
+  plugins: [
+    '@typescript-eslint',
+    'eslint-comments',
+    'jest',
+    'promise',
+    'unicorn',
+  ],
+  env: {
+    node: true,
+    browser: true,
+    es6: true,
+    jest: true,
+  },
+  extends: [
+    'airbnb-typescript',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:eslint-comments/recommended',
+    'plugin:jest/recommended',
+    'plugin:promise/recommended',
+    'plugin:unicorn/recommended',
+    'prettier',
+    'prettier/react',
+    'prettier/@typescript-eslint',
+  ],
+  rules: {
+    'no-prototype-builtins': 'off',
+    'import/prefer-default-export': 'off',
+    'import/no-default-export': 'error',
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
+    'global-require': 'error',
+  },
 };
