@@ -1,6 +1,6 @@
 # oFancyText
 
-Ryzom message coloring tool. It is available online [here](https://ofancytext.firebaseapp.com).
+Ryzom message coloring tool. It is available online [here](https://ofancytext.web.app).
 
 ## Building
 
