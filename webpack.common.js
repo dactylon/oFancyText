@@ -1,5 +1,5 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -62,8 +62,10 @@ module.exports = production => {
             {
               loader: 'sass-loader',
               options: {
-                includePaths: [path.resolve(__dirname, 'node_modules')],
-                sourceMap: !production,
+                sassOptions: {
+                  includePaths: [path.resolve(__dirname, 'node_modules')],
+                  sourceMap: !production,
+                },
               },
             },
           ],

@@ -1,4 +1,9 @@
 module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
   plugins: [
     '@typescript-eslint',
     'eslint-comments',
@@ -13,14 +18,12 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
     'plugin:eslint-comments/recommended',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
     'plugin:unicorn/recommended',
     'plugin:prettier/recommended',
-    'prettier/react',
     'prettier/@typescript-eslint',
   ],
   rules: {
