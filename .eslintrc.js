@@ -19,7 +19,7 @@ module.exports = {
     'plugin:jest/recommended',
     'plugin:promise/recommended',
     'plugin:unicorn/recommended',
-    'prettier',
+    'plugin:prettier/recommended',
     'prettier/react',
     'prettier/@typescript-eslint',
   ],
